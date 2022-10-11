@@ -15,11 +15,11 @@ int main(void)
 {
   DDRB = 0x00;
   DDRD = 0xFF;
-  run1();
-  PORTD = 0x00;
   while (1){
+	  run1();
+	  PORTD = 0x00;
     if (PINB & 0b00000001)
-      PORTD = 0xFF;
+      run2();
     }
 }
 
