@@ -1,8 +1,9 @@
+#define F_CPU 16000000UL
+
 #include <avr/io.h>
 #include <avr/power.h>
 #include <util/delay.h> // Standard AVR headerfil
 
-#define F_CPU 16000000UL
 
 int led;
 int pinNr = 0;
@@ -14,25 +15,26 @@ int pinNr = 0;
   char charlie[LED_COUNT][2] = {
   // DDR_BYTE PORT_BYTE
   // ABCDE ABCDE
-  { 0b00000000, 0b00000000 }, // Alt slukket
+  // { 0b00000000, 0b00000000 }, // Alt slukket
   { 0b00000011, 0b00000001 }, // AB 0
   { 0b00000011, 0b00000010 }, // BA 1
   { 0b00000110, 0b00000010 }, // BC 2
   { 0b00000110, 0b00000100 }, // CB 3
-  { 0b00000101, 0b00000001 }, // AC 4
-  { 0b00000101, 0b00000100 }, // CA 5
-  { 0b00001001, 0b00000001 }, // AD 6
-  { 0b00001001, 0b00001000 }, // DA 7
+  { 0b00001100, 0b00000100 }, // CD 4
+  { 0b00001100, 0b00001000 }, // DC 5
+  { 0b00000101, 0b00000001 }, // AC 6
+  { 0b00000101, 0b00000100 }, // CA 7
   { 0b00001010, 0b00000010 }, // BD 8
   { 0b00001010, 0b00001000 }, // DB 9
-  { 0b00001100, 0b00000100 }, // CD 10
-  { 0b00001100, 0b00001000 }, // DC 11
-  { 0b00011000, 0b00001000 } // DE 12
+  { 0b00001001, 0b00000001 }, // AD 10
+  { 0b00001001, 0b00001000 }, // DA 11
+  { 0b00011000, 0b00001000 }, // DE 12
+  { 0b00011000, 0b00010000 } // ED 13
 };
 
 void turnOn( char led ) { //Styring af Charlieplexing LEDs
-  DDRD = charlie[led][DDR_BYTE];
-  PORTD = charlie[led][PORT_BYTE];
+  DDRB = charlie[led][DDR_BYTE];
+  PORTB = charlie[led][PORT_BYTE];
 }
 
 int laesKnapper()
@@ -70,12 +72,15 @@ int laesKnapper()
 
 int main(void)
 {
-  ADCSRA = 0b10000111;// Aktiver ADC og del systemclock med 128
-  ADMUX = 0b01000000;// 5V Vref valgt. ADC arbejder ifht. 0V
-  for( char ld = 0; ld < LED_COUNT; ld++ ) {
-      turnOn(ld);
-      _delay_ms(1000);
+  // ADCSRA = 0b10000111;// Aktiver ADC og del systemclock med 128
+  // ADMUX = 0b01000000;// 5V Vref valgt. ADC arbejder ifht. 0V
+  while(1){
+    for (int i = 0; i<LED_COUNT; i++){
+      turnOn(i);
+      _delay_ms(250);
+    }
   }
+
   // while(1)
   // {
   //   ADCSRA |= (1 << ADSC); // Start analog konvertering
