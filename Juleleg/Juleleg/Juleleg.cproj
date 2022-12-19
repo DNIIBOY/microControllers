@@ -12,9 +12,9 @@
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>test2</AssemblyName>
-    <Name>test2</Name>
-    <RootNamespace>test2</RootNamespace>
+    <AssemblyName>Juleleg</AssemblyName>
+    <Name>Juleleg</Name>
+    <RootNamespace>Juleleg</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
