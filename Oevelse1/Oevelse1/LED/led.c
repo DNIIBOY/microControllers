@@ -24,14 +24,14 @@ void turnOnLED(unsigned char led_nr)
   if (led_nr <= MAX_LED_NR)
   {
     // Tænd den aktuelle lysdiode (de andre ændres ikke)
-     PORTD = (1 << led_nr) | PORTD;
+     PORTD |= (1 << led_nr);
   }   
 }
 
 void turnOffLED(unsigned char led_nr)
 {
 	if (led_nr <= MAX_LED_NR) {
-		PORTD = ~(1 << led_nr) & PORTD;
+		PORTD &= ~(1 << led_nr);
 	}
 }
 
