@@ -1,8 +1,8 @@
 int buzzerPin = 7;
-int tempo = 200;
+int tempo = 150;
 char notes[] = "eeeeeeegcde fffffeeeeddedg";
 int duration[] = {1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2};
-int ledPins[] = {8, 9, 10, 11, 12, 13};
+int ledPins[] = {8, 9, 10, 11, 12, 6};
 int ledCount = 6;
 
 void playTheTone(char note, int duration) {
@@ -29,9 +29,9 @@ void setup() {
   }
 }
 
+int j = 0;
 void loop() {
-  int j = 0;
-  for (int i = 0; i <= sizeof(notes)-1; i++) {
+  for (int i = 0; i <= sizeof(notes)-2; i++) {
     if (notes[i] == ' ') {
       delay(duration[i] * tempo);
     } else {
