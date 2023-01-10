@@ -9,8 +9,8 @@
 #define F_CPU 16000000UL
 #include <util/delay.h>
 #include <avr/io.h>
-#include "switch.h"
-#include "led.h"
+#include "Switch/switch.h"
+#include "LED/led.h"
 
 int main()
 {
