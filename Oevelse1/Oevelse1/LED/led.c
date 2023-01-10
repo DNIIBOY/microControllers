@@ -9,7 +9,7 @@
 
 void initLEDport()
 {
-	DDRD = 0x00;
+	DDRD = 0xFF;
 	PORTD = 0b00000000;
 }
 
