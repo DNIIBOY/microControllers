@@ -49,10 +49,10 @@ int main()
   while (1) {
     currentLED %= 8;
     if (switchOn(0)){
-      currentLED++;
+      currentLED--;
     }
     else if (switchOn(1)){
-      currentLED--;
+      currentLED++;
     }
     writeAllLEDs(1 << currentLED);
     _delay_ms(150);
